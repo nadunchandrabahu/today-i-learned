@@ -1,0 +1,200 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  box-sizing: border-box;
+  background-color: #292524;
+  color: #fafaf9;
+  font-family: "Sono", sans-serif;
+  padding: 4.8rem 6.4rem;
+}
+
+h1 {
+  font-family: "Coiny", cursive;
+  font-size: 4.2rem;
+  line-height: 1;
+  margin-top: 6px;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+/* Main Layout */
+
+#root {
+  max-width: 150rem;
+  margin: 0 auto;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4rem;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+}
+
+.logo img {
+  width: 6.8rem;
+  height: 6.8rem;
+}
+
+.fact-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.6rem;
+  background-color: #44403c;
+  margin-bottom: 4rem;
+  padding: 1.6rem 3.2rem;
+  border-radius: 1.6rem;
+}
+
+.main {
+  display: grid;
+  grid-template-columns: 25rem 1fr;
+  gap: 4.8rem;
+}
+
+/* Elements */
+
+.category {
+  margin-bottom: 1.6rem;
+}
+
+.fact {
+  display: flex;
+  align-items: center;
+  gap: 2.4rem;
+  font-size: 2rem;
+  line-height: 1.4;
+  font-family: sans-serif;
+  letter-spacing: -1px;
+  background-color: #44403c;
+  margin-bottom: 1.6rem;
+  padding: 1.6rem 2.4rem;
+  border-radius: 1.6rem;
+}
+
+.tag {
+  font-family: "Coiny", cursive;
+  text-transform: uppercase;
+  font-size: 1.4rem;
+  padding: 0.3rem 1rem 0;
+  border-radius: 100px;
+}
+
+.vote-buttons {
+  margin-left: auto;
+  display: flex;
+  flex-shrink: 0;
+  gap: 0.8rem;
+}
+
+.vote-buttons button {
+  background-color: #78716c;
+  border: none;
+  border-radius: 100px;
+  padding: 0.6rem 1.2rem;
+  font-family: inherit;
+  color: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.vote-buttons button:hover {
+  background-color: #292524;
+}
+
+ul {
+  list-style: none;
+}
+
+.source:link,
+.source:visited {
+  color: #a8a29e;
+  text-decoration: none;
+  margin-left: 1.2rem;
+  transition: all 0.3s;
+}
+
+.source:hover,
+.source:active {
+  color: #3b82f6;
+}
+
+.btn {
+  border: none;
+  font-family: "Coiny", sans-serif;
+  color: inherit;
+  line-height: 1;
+  text-transform: uppercase;
+  font-size: 1.7rem;
+  padding: 1.6rem 0 1.3rem;
+  border-radius: 100px;
+  background-image: linear-gradient(135deg, #3b82f6, #ef4444, #16a34a, #eab308);
+  transition: all 0.5s;
+  cursor: pointer;
+}
+
+.btn:hover {
+  transform: scale(1.1) rotate(-2deg);
+}
+
+.btn-large {
+  font-size: 2rem;
+  padding: 2rem 3.2rem 1.7rem;
+}
+
+.btn-all-categories {
+  margin-bottom: 1.6rem;
+  width: 100%;
+}
+
+.btn-category {
+  width: 100%;
+  background-image: none;
+}
+
+.fact-form input,
+.fact-form select {
+  width: 22rem;
+  background-color: #78716c;
+  border: none;
+  border-radius: 100px;
+  padding: 1.6rem;
+  font-size: 1.8rem;
+  font-family: inherit;
+}
+
+.fact-form input::-webkit-input-placeholder {
+  color: #a8a29e;
+}
+
+.fact-form input:first-child {
+  flex-grow: 1;
+}
+
+.fact-form span {
+  font-weight: 600;
+  font-size: 1.8rem;
+  margin-right: 1.8rem;
+}
+
+/* Utilities */
+
+.hidden {
+  display: none !important;
+}
