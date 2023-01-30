@@ -192,3 +192,9 @@ ul {
   font-size: 1.8rem;
   margin-right: 1.8rem;
 }
+
+/* Utilities */
+
+.hidden {
+  display: none;
+}
