@@ -63,14 +63,36 @@ function isURL(string) {
 function App() {
   let [showForm, setShowForm] = useState(false);
   const [facts, setFacts] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
-  useEffect(function () {
-    async function getFacts() {
-      let { data: facts, error } = await supabase.from("facts").select("*");
-      setFacts(facts);
-    }
-    getFacts();
-  }, []);
+  const [selectedCategory, setSelectedCategory] = useState("technology");
+
+  useEffect(
+    function () {
+      setIsLoading(true);
+      async function getFacts() {
+        let query = supabase.from("facts").select("*");
+
+        if (selectedCategory !== "all") {
+          query = query.eq("category", selectedCategory);
+        }
+
+        let { data: facts, error } = await query
+          .order("votesInteresting", { ascending: false })
+          .limit(1000);
+
+        if (!error) {
+          setFacts(facts);
+        } else {
+          alert("There was a problem getting data.");
+        }
+
+        setIsLoading(false);
+      }
+      getFacts();
+    },
+    [selectedCategory]
+  );
 
   return (
     <>
@@ -88,13 +110,16 @@ function App() {
 
       <main className="main">
         {/* Category filter */}
-        <CategoryFilter />
-
+        <CategoryFilter setSelectedCategory={setSelectedCategory} />
         {/* Fact List */}
-        <FactList facts={facts} />
+        {isLoading ? <Loader /> : <FactList facts={facts} />}
       </main>
     </>
   );
+}
+
+function Loader() {
+  return <p className="loading-message">Loading...</p>;
 }
 
 function Header({ setShowForm, showForm }) {
@@ -155,6 +180,13 @@ function NewFactForm({ setFacts, setShowForm }) {
       setFactSource("");
       setFactCategory("");
       setShowForm(false);
+    } else {
+      // Not posting fact due to some error.
+      {
+        alert(
+          "Fact not posted. Please check: 1) If you wrote a fact 2) whether Source URL is valid and 3) you selected a Category."
+        );
+      }
     }
   }
 
@@ -194,27 +226,37 @@ function NewFactForm({ setFacts, setShowForm }) {
   );
 }
 
-function CategoryFilter() {
+function CategoryFilter({ setSelectedCategory }) {
   return (
     <aside>
       <ul>
         <li className="category">
-          <button className="btn btn-all-categories">All</button>
+          <button
+            className="btn btn-all-categories"
+            onClick={(el) => setSelectedCategory("all")}
+          >
+            All
+          </button>
         </li>
         {CATEGORIES.map((cat) => (
-          <CategoryButtons key={cat.name} cat={cat} />
+          <CategoryButtons
+            key={cat.name}
+            cat={cat}
+            setSelectedCategory={setSelectedCategory}
+          />
         ))}
       </ul>
     </aside>
   );
 }
 
-function CategoryButtons({ cat }) {
+function CategoryButtons({ cat, setSelectedCategory }) {
   return (
     <li className="category">
       <button
         className="btn btn-category"
         style={{ backgroundColor: cat.color }}
+        onClick={(el) => setSelectedCategory(cat.name)}
       >
         {cat.name}
       </button>
@@ -238,7 +280,7 @@ function FactList({ facts }) {
   );
 }
 
-function Fact({ fact, setFacts }) {
+function Fact({ fact }) {
   return (
     <li className="fact">
       <p>

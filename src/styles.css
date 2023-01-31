@@ -73,6 +73,14 @@ h1 {
   margin-bottom: 1.6rem;
 }
 
+.loading-message {
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 3.2rem;
+  font-weight: 600;
+  margin-top: 2.4rem;
+}
+
 .fact {
   display: flex;
   align-items: center;
