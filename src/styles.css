@@ -87,6 +87,10 @@ h1 {
   border-radius: 1.6rem;
 }
 
+.fact p {
+  overflow-wrap: break-word;
+}
+
 .tag {
   font-family: "Coiny", cursive;
   text-transform: uppercase;
