@@ -1,3 +1,3 @@
 # today-i-learned
  Full stack web app using React, Supabase & JS
-https://nadunchandrabahu.github.io/today-i-learned/
+https://extraordinary-medovik-b4063b.netlify.app/
