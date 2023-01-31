@@ -26,6 +26,14 @@
   .main {
     grid-template-columns: 1fr;
   }
+  .category-buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 2.4rem;
+  }
+  section {
+    min-height: 50vh;
+  }
 }
 
 @media (max-width: 500px) {
